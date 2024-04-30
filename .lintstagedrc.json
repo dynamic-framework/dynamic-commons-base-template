@@ -1,0 +1,4 @@
+{
+  "{src,stories}/**/*.{ts,tsx}": "eslint --fix",
+  "src/**/*.scss": "stylelint --fix"
+}

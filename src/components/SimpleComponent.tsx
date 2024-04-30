@@ -5,5 +5,5 @@ export function SimpleComponent() {
     <DAlert type="info" soft>
       Simple Component
     </DAlert>
-  )
+  );
 }
