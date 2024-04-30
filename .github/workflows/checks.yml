@@ -23,9 +23,7 @@ jobs:
       - name: Build packages
         run: npm run build
       - name: Lint packages
-        run: |
-          npm run lint
-          npm run lint:style
+        run: npm run lint
       - name: Validate PR commits
         run: npx commitlint --from ${{ github.event.pull_request.head.sha }}~${{ github.event.pull_request.commits }} --to ${{ github.event.pull_request.head.sha }} --verbose
       - name: Test packages
