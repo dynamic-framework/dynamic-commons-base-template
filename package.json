@@ -18,7 +18,7 @@
     "build:react:watch": "rollup -c rollup.config.mjs",
     "clean": "rimraf dist",
     "storybook": "storybook dev -p 6006",
-    "build:storybook": "storybook build -o docs",
+    "build:storybook": "storybook build --docs -o docs",
     "lint": "npm run lint:src && npm run lint:stories && npm run lint:style",
     "lint:src": "eslint src/**/*{.ts,.tsx}",
     "lint:stories": "eslint stories/**/*.stories.tsx",
