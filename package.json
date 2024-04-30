@@ -19,7 +19,7 @@
     "clean": "rimraf dist",
     "storybook": "storybook dev -p 6006",
     "build:storybook": "storybook build -o docs",
-    "lint": "npm run eslint:src && npm run eslint:stories",
+    "lint": "npm run lint:src && npm run lint:stories && npm run list:style",
     "lint:src": "eslint src/**/*{.ts,.tsx}",
     "lint:stories": "eslint stories/**/*.stories.tsx",
     "lint:style": "stylelint \"**/*.{css,scss}\" --rd",
