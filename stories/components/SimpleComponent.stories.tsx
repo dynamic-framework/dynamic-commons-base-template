@@ -9,9 +9,24 @@ const meta = {
   parameters: {
     layout: 'centered',
   },
+  argTypes: {
+    soft: {
+      control: 'boolean',
+    },
+  },
 } satisfies Meta<typeof SimpleComponent>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {};
+export const SoftFalse: Story = {
+  args: {
+    soft: false,
+  },
+};
+
+export const SoftTrue: Story = {
+  args: {
+    soft: true,
+  },
+};
