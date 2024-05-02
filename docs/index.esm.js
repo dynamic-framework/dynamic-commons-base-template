@@ -2,8 +2,8 @@ import { jsx, jsxs } from 'react/jsx-runtime';
 import { DAlert, DChip } from '@dynamic-framework/ui-react';
 import { useEffect } from 'react';
 
-function SimpleComponent({ soft }) {
-    return (jsx(DAlert, { type: "info", soft: soft, children: "Simple Component" }));
+function SimpleComponent() {
+    return (jsx(DAlert, { type: "info", soft: true, children: "Simple Component" }));
 }
 
 function useConsoleLogEffect() {
