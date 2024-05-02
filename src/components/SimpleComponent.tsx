@@ -1,8 +1,12 @@
 import { DAlert } from '@dynamic-framework/ui-react';
 
-export function SimpleComponent() {
+import type { ComponentProps } from 'react';
+
+type Props = Pick<ComponentProps<typeof DAlert>, 'soft'>;
+
+export function SimpleComponent({ soft }: Props) {
   return (
-    <DAlert type="info" soft>
+    <DAlert type="info" soft={soft}>
       Simple Component
     </DAlert>
   );
