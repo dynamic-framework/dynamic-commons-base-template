@@ -20,13 +20,9 @@ function Element2() {
     return (jsx(DChip, { theme: "primary", text: "Element 2" }));
 }
 
-function Element3() {
-    return (jsx(DChip, { theme: "danger", text: "Element 3" }));
-}
-
 function ComplexComponent() {
     useConsoleLogEffect();
-    return (jsxs("div", { className: "d-flex flex-column gap-2", children: [jsx(Element1, {}), jsx(Element2, {}), jsx(Element3, {})] }));
+    return (jsxs("div", { className: "d-flex flex-column gap-2", children: [jsx(Element1, {}), jsx(Element2, {})] }));
 }
 
 /* eslint-disable @typescript-eslint/require-await */

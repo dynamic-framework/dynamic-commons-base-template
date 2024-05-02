@@ -22,13 +22,9 @@ function Element2() {
     return (jsxRuntime.jsx(uiReact.DChip, { theme: "primary", text: "Element 2" }));
 }
 
-function Element3() {
-    return (jsxRuntime.jsx(uiReact.DChip, { theme: "danger", text: "Element 3" }));
-}
-
 function ComplexComponent() {
     useConsoleLogEffect();
-    return (jsxRuntime.jsxs("div", { className: "d-flex flex-column gap-2", children: [jsxRuntime.jsx(Element1, {}), jsxRuntime.jsx(Element2, {}), jsxRuntime.jsx(Element3, {})] }));
+    return (jsxRuntime.jsxs("div", { className: "d-flex flex-column gap-2", children: [jsxRuntime.jsx(Element1, {}), jsxRuntime.jsx(Element2, {})] }));
 }
 
 /* eslint-disable @typescript-eslint/require-await */
