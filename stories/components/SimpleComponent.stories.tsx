@@ -13,20 +13,25 @@ const meta = {
     soft: {
       control: 'boolean',
     },
+    type: {
+      control: 'text',
+    },
   },
 } satisfies Meta<typeof SimpleComponent>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const SoftFalse: Story = {
+export const SoftInfoFalse: Story = {
   args: {
     soft: false,
+    type: 'info',
   },
 };
 
-export const SoftTrue: Story = {
+export const SoftDangerTrue: Story = {
   args: {
     soft: true,
+    type: 'danger',
   },
 };
