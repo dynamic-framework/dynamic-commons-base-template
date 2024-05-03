@@ -25,8 +25,9 @@
     "lint:style": "stylelint \"**/*.{css,scss}\" --allow-empty-input --rd",
     "lint:staged": "lint-staged",
     "prepare": "husky",
-    "test": "echo \"Error: no test command\" && exit 0",
-    "test:coverage": "echo \"Error: no coverage command\" && exit 0",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
     "commitlint": "commitlint --edit"
   },
   "devDependencies": {
