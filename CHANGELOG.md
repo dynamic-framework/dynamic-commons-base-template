@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/dynamic-framework/dynamic-commons-base-template/compare/v1.1.0...v1.1.1) (2024-05-05)
+
+
+### Bug Fixes
+
+* build before publish on CI ([0fadd01](https://github.com/dynamic-framework/dynamic-commons-base-template/commit/0fadd0173794dff1a791ea0b8cd08e538d9054da))
+
 ## [1.1.0](https://github.com/dynamic-framework/dynamic-commons-base-template/compare/v1.0.1...v1.1.0) (2024-05-02)
 
 
