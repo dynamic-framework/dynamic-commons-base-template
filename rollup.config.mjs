@@ -1,6 +1,7 @@
 import nodeResolve from '@rollup/plugin-node-resolve';
 import typescript from '@rollup/plugin-typescript';
-import sass from 'rollup-plugin-sass';
+import postcss from 'rollup-plugin-postcss';
+import autoprefixer from 'autoprefixer';
 
 export default {
   input: {
@@ -24,9 +25,9 @@ export default {
     typescript({
       tsconfig: './tsconfig.build.json',
     }),
-    sass({
-      outputStyle: 'compressed',
-      output: 'dist/styles.css',
+    postcss({
+      extract: 'css/style.css',
+      plugins: [autoprefixer],
     }),
   ],
   external: (id) => !/^(\.|\/)/.test(id),
