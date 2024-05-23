@@ -1,0 +1,7 @@
+@import "node_modules/@dynamic-framework/ui-react/src/style/abstracts/+import";
+
+.wireframe-red {
+  * {
+    border: 1px solid var(--#{$prefix}red);
+  }
+}
