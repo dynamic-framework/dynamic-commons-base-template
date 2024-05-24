@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/dynamic-framework/dynamic-commons-base-template/compare/v1.1.1...v1.2.0) (2024-05-24)
+
+
+### Features
+
+* add support to components with scss [@import](https://github.com/import) to storybook ([c7c06dc](https://github.com/dynamic-framework/dynamic-commons-base-template/commit/c7c06dccbb2a53828331d2361cba6fb1ed110e68))
+
 ## [1.1.1](https://github.com/dynamic-framework/dynamic-commons-base-template/compare/v1.1.0...v1.1.1) (2024-05-05)
 
 
