@@ -26,7 +26,7 @@ export default {
       tsconfig: './tsconfig.build.json',
     }),
     postcss({
-      extract: 'css/style.css',
+      extract: 'css/dynamic-commons.css',
       plugins: [autoprefixer],
     }),
   ],
