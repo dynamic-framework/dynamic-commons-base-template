@@ -31,6 +31,10 @@ function ComplexComponent() {
     return (jsxRuntime.jsxs("div", { className: "d-flex flex-column gap-2", children: [jsxRuntime.jsx(Element1, {}), jsxRuntime.jsx(Element2, {}), jsxRuntime.jsx(Element3, {})] }));
 }
 
+function ScssComponent() {
+    return (jsxRuntime.jsxs("div", { className: "wireframe-red", children: [jsxRuntime.jsxs("div", { style: { width: '300px', aspectRatio: '4 / 3' }, children: [jsxRuntime.jsx("div", { style: { width: '100px', aspectRatio: '1 / 1' } }), jsxRuntime.jsx("div", { style: { width: '100px', aspectRatio: '1 / 1' } }), jsxRuntime.jsx("p", { className: "float-end", children: "hola" })] }), jsxRuntime.jsx("div", { style: { width: '100px', aspectRatio: '1 / 1' } })] }));
+}
+
 /* eslint-disable @typescript-eslint/require-await */
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 /* eslint-disable @typescript-eslint/no-unsafe-call */
@@ -91,6 +95,7 @@ var liquidParser = {
 };
 
 exports.ComplexComponent = ComplexComponent;
+exports.ScssComponent = ScssComponent;
 exports.SimpleComponent = SimpleComponent;
 exports.liquidParser = liquidParser;
 //# sourceMappingURL=index.js.map

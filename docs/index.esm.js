@@ -29,6 +29,10 @@ function ComplexComponent() {
     return (jsxs("div", { className: "d-flex flex-column gap-2", children: [jsx(Element1, {}), jsx(Element2, {}), jsx(Element3, {})] }));
 }
 
+function ScssComponent() {
+    return (jsxs("div", { className: "wireframe-red", children: [jsxs("div", { style: { width: '300px', aspectRatio: '4 / 3' }, children: [jsx("div", { style: { width: '100px', aspectRatio: '1 / 1' } }), jsx("div", { style: { width: '100px', aspectRatio: '1 / 1' } }), jsx("p", { className: "float-end", children: "hola" })] }), jsx("div", { style: { width: '100px', aspectRatio: '1 / 1' } })] }));
+}
+
 /* eslint-disable @typescript-eslint/require-await */
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 /* eslint-disable @typescript-eslint/no-unsafe-call */
@@ -88,5 +92,5 @@ var liquidParser = {
     },
 };
 
-export { ComplexComponent, SimpleComponent, liquidParser };
+export { ComplexComponent, ScssComponent, SimpleComponent, liquidParser };
 //# sourceMappingURL=index.esm.js.map

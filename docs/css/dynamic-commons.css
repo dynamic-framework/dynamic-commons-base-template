@@ -1,0 +1,4 @@
+/* stylelint-disable scss/dollar-variable-default */
+.wireframe-red * {
+  border: 1px solid var(--bs-red);
+}
