@@ -12,7 +12,6 @@ it('should render', () => {
     <div
       class="alert alert-info"
       role="alert"
-      style="--bs-alert-component-separator-opacity: 0.3;"
     >
       <i
         class="d-icon bi bi-info-circle alert-icon"
