@@ -2,11 +2,11 @@ import { DAlert } from '@dynamic-framework/ui-react';
 
 import type { ComponentProps } from 'react';
 
-type Props = Pick<ComponentProps<typeof DAlert>, 'soft' | 'type'>;
+type Props = Pick<ComponentProps<typeof DAlert>, 'theme'>;
 
-export function SimpleComponent({ soft, type = 'info' }: Props) {
+export function SimpleComponent({ theme = 'info' }: Props) {
   return (
-    <DAlert type={type} soft={soft}>
+    <DAlert theme={theme}>
       Simple Component
     </DAlert>
   );
