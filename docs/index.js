@@ -4,8 +4,8 @@ var jsxRuntime = require('react/jsx-runtime');
 var uiReact = require('@dynamic-framework/ui-react');
 var react = require('react');
 
-function SimpleComponent({ soft, type = 'info' }) {
-    return (jsxRuntime.jsx(uiReact.DAlert, { type: type, soft: soft, children: "Simple Component" }));
+function SimpleComponent({ theme = 'info' }) {
+    return (jsxRuntime.jsx(uiReact.DAlert, { theme: theme, children: "Simple Component" }));
 }
 
 function useConsoleLogEffect() {
