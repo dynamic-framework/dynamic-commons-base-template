@@ -4,7 +4,7 @@ import { SimpleComponent } from '.';
 
 it('should render', () => {
   const { container } = render(
-    <SimpleComponent />,
+    <SimpleComponent theme="info" />,
   );
 
   expect(container).toMatchInlineSnapshot(`
