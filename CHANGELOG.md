@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.3.0](https://github.com/dynamic-framework/dynamic-commons-base-template/compare/v1.2.0...v1.3.0) (2024-10-22)
+
+
+### Features
+
+* update DS to 1.31 ([#24](https://github.com/dynamic-framework/dynamic-commons-base-template/issues/24)) ([7f89ac0](https://github.com/dynamic-framework/dynamic-commons-base-template/commit/7f89ac0b08035804586328ff512da8da4e58537b))
+* update framework to 1.32.0 and test setup ([87c3376](https://github.com/dynamic-framework/dynamic-commons-base-template/commit/87c33763a6dd92efb7918d811d254abef3a5ec95))
+
 ## [1.2.0](https://github.com/dynamic-framework/dynamic-commons-base-template/compare/v1.1.1...v1.2.0) (2024-05-24)
 
 
