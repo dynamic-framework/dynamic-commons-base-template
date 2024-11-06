@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.0](https://github.com/dynamic-framework/dynamic-commons-base-template/compare/v1.3.0...v1.4.0) (2024-11-06)
+
+
+### Features
+
+* update dynamic-framework to 1.32.1 ([ae63d1e](https://github.com/dynamic-framework/dynamic-commons-base-template/commit/ae63d1ebd688586fcde45442af81bf928b0f5e4b))
+
 ## [1.3.0](https://github.com/dynamic-framework/dynamic-commons-base-template/compare/v1.2.0...v1.3.0) (2024-10-22)
 
 
