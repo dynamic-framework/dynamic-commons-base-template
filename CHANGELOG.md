@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.0](https://github.com/dynamic-framework/dynamic-commons-base-template/compare/v1.4.0...v1.5.0) (2024-12-18)
+
+
+### Features
+
+* update DS to 1.34.0 and audit ([#32](https://github.com/dynamic-framework/dynamic-commons-base-template/issues/32)) ([a18ace4](https://github.com/dynamic-framework/dynamic-commons-base-template/commit/a18ace497055d1b7d326b7823906e0a9b73ab90f))
+
 ## [1.4.0](https://github.com/dynamic-framework/dynamic-commons-base-template/compare/v1.3.0...v1.4.0) (2024-11-06)
 
 
