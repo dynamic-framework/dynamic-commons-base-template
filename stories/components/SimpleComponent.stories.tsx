@@ -10,10 +10,7 @@ const meta = {
     layout: 'centered',
   },
   argTypes: {
-    soft: {
-      control: 'boolean',
-    },
-    type: {
+    theme: {
       control: 'text',
     },
   },
@@ -24,14 +21,12 @@ type Story = StoryObj<typeof meta>;
 
 export const SoftInfoFalse: Story = {
   args: {
-    soft: false,
-    type: 'info',
+    theme: 'info',
   },
 };
 
 export const SoftDangerTrue: Story = {
   args: {
-    soft: true,
-    type: 'danger',
+    theme: 'danger',
   },
 };
