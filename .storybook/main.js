@@ -48,16 +48,11 @@ module.exports = {
           },
         ],
       }
-    }
+    },
   ],
   framework: {
-    name: '@storybook/react-webpack5',
-    options: {
-      builder: {
-        fsCache: true,
-        lazyCompilation: false,
-      },
-    },
+    name: '@storybook/react-vite',
+    options: {},
   },
   typescript: {
     check: false,
@@ -69,6 +64,7 @@ module.exports = {
     },
   },
   core: {
+    builder: '@storybook/builder-vite',
     disableTelemetry: true,
   },
   staticDirs: [
