@@ -8,6 +8,7 @@ function SimpleComponent({ theme = 'info' }) {
     return (jsxRuntime.jsx(uiReact.DAlert, { theme: theme, children: "Simple Component" }));
 }
 
+/* eslint-disable no-console */
 function useConsoleLogEffect() {
     react.useEffect(() => {
         console.log('useConsoleLogEffect');

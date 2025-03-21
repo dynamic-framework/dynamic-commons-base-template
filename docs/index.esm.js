@@ -6,6 +6,7 @@ function SimpleComponent({ theme = 'info' }) {
     return (jsx(DAlert, { theme: theme, children: "Simple Component" }));
 }
 
+/* eslint-disable no-console */
 function useConsoleLogEffect() {
     useEffect(() => {
         console.log('useConsoleLogEffect');
