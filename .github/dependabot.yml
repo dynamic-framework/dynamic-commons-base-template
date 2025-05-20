@@ -5,24 +5,25 @@ updates:
     target-branch: "master"
     schedule:
       interval: "daily"
-    open-pull-requests-limit: 0
     commit-message:
       prefix: "chore"
       include: "scope"
-    reviewers: 
+    reviewers:
       - "dynamic-framework/dynamic-framework-team"
-    groups:
-      dynamic-ui:
-        applies-to: version-updates
-        patterns:
-          - "@dynamic-framework/dynamic-ui"
+    open-pull-requests-limit: 1
+    allow:
+      - dependency-type: "all"
+    ignore:
+      - dependency-name: "*"
         update-types:
-          - "patch"
-          - "minor"
+          - "version-update:semver-major"
+          - "version-update:semver-minor"
+          - "version-update:semver-patch"
+    groups:
       security-fixes:
         applies-to: security-updates
-        patterns:
-          - "*"
         update-types:
           - "patch"
           - "minor"
+        patterns:
+          - "*"
