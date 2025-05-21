@@ -12,18 +12,15 @@ updates:
       - "dynamic-framework/dynamic-framework-team"
     open-pull-requests-limit: 1
     allow:
-      - dependency-type: "all"
+      - dependency-name: "@dynamic-framework/ui-react"
     ignore:
-      - dependency-name: "*"
+      - dependency-name: "@dynamic-framework/ui-react"
         update-types:
-          - "version-update:semver-major"
-          - "version-update:semver-minor"
-          - "version-update:semver-patch"
+          - version-update:semver-major
     groups:
-      security-fixes:
-        applies-to: security-updates
-        update-types:
-          - "patch"
-          - "minor"
+      ui-react:
         patterns:
-          - "*"
+          - "@dynamic-framework/ui-react"
+        update-types:
+          - minor
+          - patch
