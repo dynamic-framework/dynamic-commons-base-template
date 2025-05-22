@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.6.0](https://github.com/dynamic-framework/dynamic-commons-base-template/compare/v1.5.0...v1.6.0) (2025-05-22)
+
+
+### Features
+
+* upgrade storybook, upgrade dynamic-ui and remove deprecated features ([#35](https://github.com/dynamic-framework/dynamic-commons-base-template/issues/35)) ([1eb9fe8](https://github.com/dynamic-framework/dynamic-commons-base-template/commit/1eb9fe824a62790869ecde5f181d5e88ad5b74dc))
+
+
+### Bug Fixes
+
+* avoid deprecations by updating stylelint and stylelint config version ([#36](https://github.com/dynamic-framework/dynamic-commons-base-template/issues/36)) ([d568e33](https://github.com/dynamic-framework/dynamic-commons-base-template/commit/d568e337011faea55871dda0f361d9f4008b4635))
+
 ## [1.5.0](https://github.com/dynamic-framework/dynamic-commons-base-template/compare/v1.4.0...v1.5.0) (2024-12-19)
 
 
