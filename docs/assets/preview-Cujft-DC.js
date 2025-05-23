@@ -1,1 +1,0 @@
-import{j as o}from"./jsx-runtime-B1xBdNM5.js";import{D as t}from"./index.esm-BLJDPAN9.js";import"./index-BNzr4dE9.js";import"./_commonjsHelpers-Cpj98o6Y.js";import"./index-B6eyhSL2.js";const p={parameters:{actions:{argTypesRegex:"^on[A-Z].*"},controls:{matchers:{color:/(background|color)$/i,date:/Date$/}}},decorators:[r=>o.jsx(t,{children:o.jsx(r,{})})]};export{p as default};
