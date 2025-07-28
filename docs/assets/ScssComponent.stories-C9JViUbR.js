@@ -1,0 +1,3 @@
+import{j as s}from"./iframe-CC8Q6NnY.js";function r(){return s.jsxs("div",{className:"wireframe-red",children:[s.jsxs("div",{style:{width:"300px",aspectRatio:"4 / 3"},children:[s.jsx("div",{style:{width:"100px",aspectRatio:"1 / 1"}}),s.jsx("div",{style:{width:"100px",aspectRatio:"1 / 1"}}),s.jsx("p",{className:"float-end",children:"hola"})]}),s.jsx("div",{style:{width:"100px",aspectRatio:"1 / 1"}})]})}const n={title:"Components/ScssComponent",component:r},e={args:{}};var t,a,o;e.parameters={...e.parameters,docs:{...(t=e.parameters)==null?void 0:t.docs,source:{originalSource:`{
+  args: {}
+}`,...(o=(a=e.parameters)==null?void 0:a.docs)==null?void 0:o.source}}};const c=["Default"];export{e as Default,c as __namedExportsOrder,n as default};
