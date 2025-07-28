@@ -1,11 +1,11 @@
-import type { Preview } from '@storybook/react';
+import type { Preview } from '@storybook/react-vite';
 
 import '@dynamic-framework/ui-react/dist/css/dynamic-ui-non-root.css';
 import { DContextProvider } from '@dynamic-framework/ui-react';
 
 const preview: Preview = {
   parameters: {
-    actions: {argTypesRegex: '^on[A-Z].*'},
+    layout: 'centered',
     controls: {
       matchers: {
         color: /(background|color)$/i,
@@ -21,6 +21,7 @@ const preview: Preview = {
       </DContextProvider>
     ),
   ],
+  tags: ['autodocs']
 };
 
 export default preview;
