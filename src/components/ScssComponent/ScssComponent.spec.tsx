@@ -13,13 +13,13 @@ it('should render', () => {
       class="wireframe-red"
     >
       <div
-        style="width: 300px;"
+        style="width: 300px; aspect-ratio: 4 / 3;"
       >
         <div
-          style="width: 100px;"
+          style="width: 100px; aspect-ratio: 1 / 1;"
         />
         <div
-          style="width: 100px;"
+          style="width: 100px; aspect-ratio: 1 / 1;"
         />
         <p
           class="float-end"
@@ -28,7 +28,7 @@ it('should render', () => {
         </p>
       </div>
       <div
-        style="width: 100px;"
+        style="width: 100px; aspect-ratio: 1 / 1;"
       />
     </div>
   </div>
