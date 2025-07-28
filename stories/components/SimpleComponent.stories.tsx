@@ -1,14 +1,10 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import { SimpleComponent } from '../../src';
 
 const meta = {
   title: 'Components/SimpleComponent',
   component: SimpleComponent,
-  tags: ['autodocs'],
-  parameters: {
-    layout: 'centered',
-  },
   argTypes: {
     theme: {
       control: 'text',

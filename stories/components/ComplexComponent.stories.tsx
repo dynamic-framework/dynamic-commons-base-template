@@ -1,14 +1,10 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import { ComplexComponent } from '../../src';
 
 const meta = {
   title: 'Components/ComplexComponent',
   component: ComplexComponent,
-  tags: ['autodocs'],
-  parameters: {
-    layout: 'centered',
-  },
 } satisfies Meta<typeof ComplexComponent>;
 
 export default meta;
