@@ -4,7 +4,7 @@ import { SimpleComponent } from '.';
 
 it('should render', () => {
   const { container } = render(
-    <SimpleComponent theme="info" />,
+    <SimpleComponent color="info" />,
   );
 
   expect(container).toMatchInlineSnapshot(`
@@ -13,10 +13,35 @@ it('should render', () => {
       class="alert alert-info"
       role="alert"
     >
-      <i
-        class="d-icon bi bi-info-circle alert-icon"
-        style="--bs-icon-component-loading-duration: 1.8s; --bs-icon-component-padding: 0;"
-      />
+      <span
+        class="d-icon alert-icon"
+      >
+        <svg
+          aria-hidden="true"
+          class="lucide lucide-info"
+          fill="none"
+          height="24"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <circle
+            cx="12"
+            cy="12"
+            r="10"
+          />
+          <path
+            d="M12 16v-4"
+          />
+          <path
+            d="M12 8h.01"
+            />
+        </svg>
+      </span>
       <div
         class="alert-text"
       >
