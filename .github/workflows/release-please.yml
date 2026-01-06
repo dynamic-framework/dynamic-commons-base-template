@@ -1,9 +1,11 @@
 name: Release
 
 on:
-  push:
-    branches:
-      - master
+  workflow_dispatch:
+  # Uncomment the following lines to enable automatic deployment on pushes to master
+  # push:
+  #   branches:
+  #     - master
 
 permissions:
   contents: write
