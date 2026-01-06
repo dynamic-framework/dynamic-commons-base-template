@@ -1,8 +1,10 @@
 name: Storybook
 on:
-  push:
-    branches:
-      - master
+  workflow_dispatch:
+  # Uncomment the following lines to enable automatic deployment on pushes to master
+  # push:
+  #   branches:
+  #     - master
 
 jobs:
   storybook:
@@ -30,5 +32,5 @@ jobs:
           BRANCH: docs
           FOLDER: docs
           CLEAN: true
-          TARGET_FOLDER: docs
-          COMMIT_MESSAGE: 'doc: update storybook'
+          TARGET_FOLDER: docs/latest
+          COMMIT_MESSAGE: 'doc: update storybook latest'
