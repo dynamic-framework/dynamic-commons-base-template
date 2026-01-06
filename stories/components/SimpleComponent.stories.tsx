@@ -6,7 +6,7 @@ const meta = {
   title: 'Components/SimpleComponent',
   component: SimpleComponent,
   argTypes: {
-    theme: {
+    color: {
       control: 'text',
     },
   },
@@ -17,12 +17,12 @@ type Story = StoryObj<typeof meta>;
 
 export const SoftInfoFalse: Story = {
   args: {
-    theme: 'info',
+    color: 'info',
   },
 };
 
 export const SoftDangerTrue: Story = {
   args: {
-    theme: 'danger',
+    color: 'danger',
   },
 };
