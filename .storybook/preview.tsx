@@ -1,6 +1,6 @@
 import type { Preview } from '@storybook/react-vite';
 
-import '@dynamic-framework/ui-react/dist/css/dynamic-ui-non-root.css';
+import '@dynamic-framework/ui-react/dist/css/dynamic-ui.min.css';
 import { DContextProvider } from '@dynamic-framework/ui-react';
 
 const preview: Preview = {
