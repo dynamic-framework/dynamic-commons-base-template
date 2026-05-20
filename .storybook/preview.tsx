@@ -12,6 +12,11 @@ const preview: Preview = {
         date: /Date$/,
       },
     },
+    docs: {
+      defaultName: 'Quick Start',
+      defaultPath: '/docs/quickstart--docs',
+    },
+    options: {},
   },
   decorators: [
     (Story) => (

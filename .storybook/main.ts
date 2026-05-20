@@ -15,7 +15,10 @@ function getAbsolutePath(value: string) {
 }
 
 const config: StorybookConfig = {
-  stories: ['../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
+  stories: [
+    '../stories/QuickStart.mdx',
+    '../stories/**/*.stories.@(js|jsx|mjs|ts|tsx|mdx)'
+  ],
   addons: [
     getAbsolutePath('@storybook/addon-links'),
     getAbsolutePath('@storybook/addon-a11y'),
@@ -64,7 +67,7 @@ const config: StorybookConfig = {
         },
       },
     });
-  },
+  }
 };
 
 export default config;
