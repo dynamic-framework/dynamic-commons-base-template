@@ -5,8 +5,9 @@
 
 ### Features
 
-* add release please config files and add develop branch to CI checks ([#52](https://github.com/dynamic-framework/dynamic-commons-base-template/issues/52)) ([0aed99c](https://github.com/dynamic-framework/dynamic-commons-base-template/commit/0aed99c9c8d1e666aeb1c99ff3c2f60b7d8d5085))
-* update workflow triggers to support manual dispatch and add develop branch ([9fe3799](https://github.com/dynamic-framework/dynamic-commons-base-template/commit/9fe3799fe4fa24120d99296efa1ea340deded950))
+* upgrade React and React DOM to v19, including matching type packages ([#59](https://github.com/dynamic-framework/dynamic-commons-base-template/issues/59))
+* upgrade Storybook to v10.4 and migrate static docs to MDX Quick Start page ([#59](https://github.com/dynamic-framework/dynamic-commons-base-template/issues/59))
+* upgrade Vite to v8 and @vitejs/plugin-react to v6, and align Node engine requirement ([#59](https://github.com/dynamic-framework/dynamic-commons-base-template/issues/59))
 
 ## [1.6.0](https://github.com/dynamic-framework/dynamic-commons-base-template/compare/v1.5.0...v1.6.0) (2025-05-22)
 

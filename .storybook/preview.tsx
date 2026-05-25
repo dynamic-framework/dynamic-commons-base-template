@@ -14,7 +14,7 @@ const preview: Preview = {
     },
     docs: {
       defaultName: 'Quick Start',
-      defaultPath: '/docs/quickstart--docs',
+      defaultPath: '/docs/quick-start--docs',
     },
     options: {},
   },
