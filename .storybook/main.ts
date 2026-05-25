@@ -1,6 +1,6 @@
 import { fileURLToPath } from "node:url";
 import { createRequire } from "node:module";
-import { StorybookConfig } from "@storybook/react-vite";
+import type { StorybookConfig } from "@storybook/react-vite";
 import { dirname, join, resolve } from "path";
 import remarkGfm from 'remark-gfm';
 import { mergeConfig } from "vite";
