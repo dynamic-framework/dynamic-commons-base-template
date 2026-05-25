@@ -1,6 +1,11 @@
 # Changelog
 
-## [1.7.0](https://github.com/dynamic-framework/dynamic-commons-base-template/compare/v1.6.0...v1.7.0) (2026-01-14)
+## [2.0.0](https://github.com/dynamic-framework/dynamic-commons-base-template/compare/v1.6.0...v2.0.0) (2026-01-14)
+
+### ⚠ BREAKING CHANGES
+
+* `react` and `react-dom` are now strict peer dependencies (React 19).
+* Consumers must install compatible React versions explicitly; React is no longer provided transitively.
 
 
 ### Features
