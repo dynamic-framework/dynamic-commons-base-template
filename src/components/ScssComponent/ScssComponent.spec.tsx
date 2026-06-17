@@ -8,29 +8,29 @@ it('should render', () => {
   );
 
   expect(container).toMatchInlineSnapshot(`
-  <div>
+<div>
+  <div
+    class="wireframe-red"
+  >
     <div
-      class="wireframe-red"
+      style="width: 300px;"
     >
-      <div
-        style="width: 300px;"
-      >
-        <div
-          style="width: 100px;"
-        />
-        <div
-          style="width: 100px;"
-        />
-        <p
-          class="float-end"
-        >
-          hola
-        </p>
-      </div>
       <div
         style="width: 100px;"
       />
+      <div
+        style="width: 100px;"
+      />
+      <p
+        class="float-end"
+      >
+        hola
+      </p>
     </div>
+    <div
+      style="width: 100px;"
+    />
   </div>
-  `);
+</div>
+`);
 });
