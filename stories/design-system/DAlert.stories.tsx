@@ -140,26 +140,24 @@ export const InfoCustomStyle: Story = {
     >
       <div
         style={{
-          display: 'grid',
           gridTemplateColumns: '1.5rem 1fr',
-          gap: '0.75rem',
-          alignItems: 'start',
         }}
+        className="d-grid gap-2 align-items-start"
       >
-        <span style={{ marginTop: '0.1rem', color: '#6b7280' }}>
+        <span className="text-gray-700">
           <DIcon icon="CircleInfo" />
         </span>
 
-        <div className="small">
-          <p style={{ margin: 0 }}>
+        <div className="small text-gray-700">
+          <p className="m-0">
             <span>
               Esta solicitud debe ser aprobada por los apoderados en LV Pass dentro de los proximos
               {' '}
             </span>
-            <strong style={{ color: '#0a5784' }}>2 minutos</strong>
+            <strong className="text-info-700">2 minutos</strong>
             <span> para que la operacion pueda ejecutarse.</span>
           </p>
-          <p style={{ margin: 0 }}>
+          <p className="m-0">
             <span>Si el plazo expira sin todas las aprobaciones, </span>
             <strong>la solicitud sera rechazada automaticamente.</strong>
           </p>
