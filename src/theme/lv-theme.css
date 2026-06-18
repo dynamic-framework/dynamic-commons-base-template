@@ -88,6 +88,10 @@
   --bs-btn-secondary-color: var(--bs-white);
 }
 
+.alert {
+  --bs-alert-border: 0;
+}
+
 body {
   font-family: var(--bs-font-sans-serif);
   background: linear-gradient(180deg, var(--lv-surface-top) 0%, var(--lv-bg-page) 28%, var(--lv-bg-page) 100%);
