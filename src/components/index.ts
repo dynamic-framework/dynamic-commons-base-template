@@ -7,3 +7,4 @@ export * from './LVCarousel';
 export * from './LVCardPost';
 export * from './LVSegmentedControl';
 export * from './LVProgressStatus';
+export * from './LVMonthPicker';
