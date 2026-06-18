@@ -13,6 +13,7 @@
     "src/style"
   ],
   "scripts": {
+    "start": "vite",
     "build": "npm run clean && npm run build:react",
     "build:react": "rollup -c rollup.config.mjs",
     "build:react:watch": "rollup -c rollup.config.mjs",

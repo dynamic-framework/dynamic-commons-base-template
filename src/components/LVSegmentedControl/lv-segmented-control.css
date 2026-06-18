@@ -1,0 +1,65 @@
+.lv-segmented-control {
+  display: inline-flex;
+  align-items: stretch;
+  border: 1px solid #d9e0e8;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  background-color: #ffffff;
+}
+
+.lv-segmented-control__item {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 10rem;
+  padding: 0.75rem 1.5rem;
+  margin: 0;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #0d5a86;
+  background-color: #ffffff;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.lv-segmented-control__item + .lv-segmented-control__item {
+  border-left: 1px solid #d9e0e8;
+}
+
+.lv-segmented-control__item input {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.lv-segmented-control__item.is-active {
+  color: #ffffff;
+  background-color: #0a5784;
+}
+
+.lv-segmented-control__item.is-disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.lv-segmented-control__item:not(.is-disabled):hover {
+  background-color: #eaf1f6;
+}
+
+.lv-segmented-control__item.is-active:not(.is-disabled):hover {
+  background-color: #084a6f;
+}
+
+@media (max-width: 768px) {
+  .lv-segmented-control__item {
+    min-width: 7rem;
+    padding: 0.625rem 1rem;
+    font-size: 1.5rem;
+  }
+}

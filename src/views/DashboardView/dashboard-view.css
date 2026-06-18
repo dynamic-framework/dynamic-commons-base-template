@@ -1,0 +1,112 @@
+.dashboard-page {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 40px 20px 64px;
+}
+
+.dashboard-header h1 {
+  margin: 0;
+  font-size: clamp(1.7rem, 2.6vw, 2.4rem);
+}
+
+.dashboard-header p {
+  margin: 8px 0 0;
+  color: var(--lv-color-muted);
+}
+
+.dashboard-grid {
+  margin-top: 24px;
+}
+
+.kpi-card {
+  border-top: 3px solid var(--bs-primary);
+}
+
+.kpi-card .d-card-body {
+  padding: 18px;
+}
+
+.kpi-title {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--lv-color-muted);
+}
+
+.kpi-value {
+  margin: 10px 0;
+  font-size: 1.52rem;
+  font-weight: 700;
+}
+
+.kpi-trend {
+  margin: 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.kpi-trend.is-positive {
+  color: var(--lv-color-success);
+}
+
+.kpi-trend.is-negative {
+  color: var(--lv-color-danger);
+}
+
+.dashboard-content {
+  margin-top: 22px;
+}
+
+.panel .d-card-header,
+.panel .d-card-body {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.panel .d-card-header {
+  padding-top: 20px;
+  padding-bottom: 0;
+}
+
+.panel .d-card-body {
+  padding-top: 14px;
+  padding-bottom: 20px;
+}
+
+.progress-label {
+  margin: 10px 0 0;
+  color: var(--lv-color-muted);
+  font-size: 0.9rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 10px 8px;
+  border-bottom: 1px solid var(--lv-color-line);
+  font-size: 0.92rem;
+}
+
+th {
+  color: var(--lv-color-muted);
+  font-weight: 600;
+}
+
+@media (max-width: 900px) {
+  .panel .d-card-header,
+  .panel .d-card-body,
+  .kpi-card .d-card-body {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+@media (max-width: 560px) {
+  .dashboard-page {
+    padding: 24px 12px 40px;
+  }
+}

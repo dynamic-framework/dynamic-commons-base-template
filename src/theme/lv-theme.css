@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root,
+[data-bs-theme='light'],
+[data-bs-theme='dynamic'] {
+  --bs-font-sans-serif: 'Montserrat', sans-serif;
+  --bs-primary-rgb: 0, 74, 117;
+  --bs-primary: rgb(var(--bs-primary-rgb));
+
+  --lv-primary-base: rgb(var(--bs-primary-rgb));
+
+  --bs-primary-25: color-mix(in srgb, var(--lv-primary-base) 8%, white);
+  --bs-primary-50: color-mix(in srgb, var(--lv-primary-base) 12%, white);
+  --bs-primary-100: color-mix(in srgb, var(--lv-primary-base) 20%, white);
+  --bs-primary-200: color-mix(in srgb, var(--lv-primary-base) 35%, white);
+  --bs-primary-300: color-mix(in srgb, var(--lv-primary-base) 50%, white);
+  --bs-primary-400: color-mix(in srgb, var(--lv-primary-base) 65%, white);
+  --bs-primary-500: var(--lv-primary-base);
+  --bs-primary-600: color-mix(in srgb, var(--lv-primary-base) 85%, black);
+  --bs-primary-700: color-mix(in srgb, var(--lv-primary-base) 70%, black);
+  --bs-primary-800: color-mix(in srgb, var(--lv-primary-base) 55%, black);
+  --bs-primary-900: color-mix(in srgb, var(--lv-primary-base) 40%, black);
+
+  /* Keep Dynamic naming parity: rgb(var(--bs-primary-XXX-rgb)) */
+  --bs-primary-25-rgb: from var(--bs-primary-25) r g b;
+  --bs-primary-50-rgb: from var(--bs-primary-50) r g b;
+  --bs-primary-100-rgb: from var(--bs-primary-100) r g b;
+  --bs-primary-200-rgb: from var(--bs-primary-200) r g b;
+  --bs-primary-300-rgb: from var(--bs-primary-300) r g b;
+  --bs-primary-400-rgb: from var(--bs-primary-400) r g b;
+  --bs-primary-500-rgb: var(--bs-primary-rgb);
+  --bs-primary-600-rgb: from var(--bs-primary-600) r g b;
+  --bs-primary-700-rgb: from var(--bs-primary-700) r g b;
+  --bs-primary-800-rgb: from var(--bs-primary-800) r g b;
+  --bs-primary-900-rgb: from var(--bs-primary-900) r g b;
+
+  --bs-secondary-rgb: 51, 61, 71;
+  --bs-secondary: rgb(var(--bs-secondary-rgb));
+
+  --lv-secondary-base: rgb(var(--bs-secondary-rgb));
+
+  --bs-secondary-25: color-mix(in srgb, var(--lv-secondary-base) 8%, white);
+  --bs-secondary-50: color-mix(in srgb, var(--lv-secondary-base) 12%, white);
+  --bs-secondary-100: color-mix(in srgb, var(--lv-secondary-base) 20%, white);
+  --bs-secondary-200: color-mix(in srgb, var(--lv-secondary-base) 35%, white);
+  --bs-secondary-300: color-mix(in srgb, var(--lv-secondary-base) 50%, white);
+  --bs-secondary-400: color-mix(in srgb, var(--lv-secondary-base) 65%, white);
+  --bs-secondary-500: var(--lv-secondary-base);
+  --bs-secondary-600: color-mix(in srgb, var(--lv-secondary-base) 85%, black);
+  --bs-secondary-700: color-mix(in srgb, var(--lv-secondary-base) 70%, black);
+  --bs-secondary-800: color-mix(in srgb, var(--lv-secondary-base) 55%, black);
+  --bs-secondary-900: color-mix(in srgb, var(--lv-secondary-base) 40%, black);
+
+  --bs-secondary-25-rgb: from var(--bs-secondary-25) r g b;
+  --bs-secondary-50-rgb: from var(--bs-secondary-50) r g b;
+  --bs-secondary-100-rgb: from var(--bs-secondary-100) r g b;
+  --bs-secondary-200-rgb: from var(--bs-secondary-200) r g b;
+  --bs-secondary-300-rgb: from var(--bs-secondary-300) r g b;
+  --bs-secondary-400-rgb: from var(--bs-secondary-400) r g b;
+  --bs-secondary-500-rgb: var(--bs-secondary-rgb);
+  --bs-secondary-600-rgb: from var(--bs-secondary-600) r g b;
+  --bs-secondary-700-rgb: from var(--bs-secondary-700) r g b;
+  --bs-secondary-800-rgb: from var(--bs-secondary-800) r g b;
+  --bs-secondary-900-rgb: from var(--bs-secondary-900) r g b;
+
+  --lv-bg-page: #f4f5f8;
+  --lv-surface-top: #eef2ff;
+  --lv-color-muted: #5b6478;
+  --lv-color-success: #0e9f6e;
+  --lv-color-danger: #d64545;
+  --lv-color-line: #eef0f7;
+
+  /* BTN */
+
+  .btn {
+    --bs-btn-line-height: 1;
+    --bs-btn-padding-y: 16px;
+    --bs-btn-padding-x: 50px;
+  }
+
+  /* BTN SECONDARY CUSTOM */
+
+  --bs-btn-secondary-bg: var(--bs-secondary-500);
+  --bs-btn-secondary-border-color: var(--bs-secondary-500);
+  --bs-btn-secondary-hover-bg: var(--bs-secondary-600);
+  --bs-btn-secondary-hover-color: var(--bs-white);
+  --bs-btn-secondary-hover-border-color: var(--bs-secondary-600);
+  --bs-btn-secondary-color: var(--bs-white);
+}
+
+body {
+  font-family: var(--bs-font-sans-serif);
+  background: linear-gradient(180deg, var(--lv-surface-top) 0%, var(--lv-bg-page) 28%, var(--lv-bg-page) 100%);
+}
