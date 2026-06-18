@@ -19,6 +19,9 @@ type PortalPayloads = {
   offcanvasExample: {
     description: string;
   };
+  offcanvasBottomExample: {
+    description: string;
+  };
 };
 
 const ModalPortal = ({ payload }: PortalProps<PortalPayloads['modalExample']>) => {
@@ -106,6 +109,50 @@ const OffcanvasPortal = ({ payload }: PortalProps<PortalPayloads['offcanvasExamp
   );
 };
 
+const OffcanvasBottomPortal = (
+  { payload }: PortalProps<PortalPayloads['offcanvasBottomExample']>,
+) => {
+  const { closePortal } = useDPortalContext<PortalPayloads>();
+
+  const handleClose = useCallback(() => {
+    closePortal();
+  }, [closePortal]);
+
+  return (
+    <DOffcanvas
+      name="offcanvasBottomExample"
+      openFrom="bottom"
+    >
+      <DOffcanvas.Header
+        showCloseButton
+        onClose={handleClose}
+      >
+        <h5 className="fw-bold mb-0">Offcanvas desde abajo</h5>
+      </DOffcanvas.Header>
+      <DOffcanvas.Body>
+        <p className="mb-1">
+          Este offcanvas se abre desde la parte inferior.
+        </p>
+        <small>{payload.description}</small>
+      </DOffcanvas.Body>
+      <DOffcanvas.Footer>
+        <DButton
+          variant="outline"
+          onClick={handleClose}
+        >
+          Cerrar
+        </DButton>
+        <DButton
+          color="primary"
+          onClick={handleClose}
+        >
+          Entendido
+        </DButton>
+      </DOffcanvas.Footer>
+    </DOffcanvas>
+  );
+};
+
 const ModalTrigger = () => {
   const { openPortal } = useDPortalContext<PortalPayloads>();
 
@@ -134,6 +181,20 @@ const OffcanvasTrigger = () => {
   );
 };
 
+const OffcanvasBottomTrigger = () => {
+  const { openPortal } = useDPortalContext<PortalPayloads>();
+
+  const handleOpenOffcanvasBottom = useCallback(() => {
+    openPortal('offcanvasBottomExample', {
+      description: 'Abierto desde abajo con useDPortalContext',
+    });
+  }, [openPortal]);
+
+  return (
+    <DButton onClick={handleOpenOffcanvasBottom}>Abrir Offcanvas Bottom</DButton>
+  );
+};
+
 const DualTrigger = () => (
   <div style={{ display: 'flex', gap: '1rem' }}>
     <ModalTrigger />
@@ -147,6 +208,7 @@ const withPortalProvider = (content: JSX.Element) => (
     availablePortals={{
       modalExample: ModalPortal,
       offcanvasExample: OffcanvasPortal,
+      offcanvasBottomExample: OffcanvasBottomPortal,
     }}
   >
     {content}
@@ -177,6 +239,11 @@ export const Modal: Story = {
 export const Offcanvas: Story = {
   name: 'DOffcanvas',
   render: () => withPortalProvider(<OffcanvasTrigger />),
+};
+
+export const OffcanvasBottom: Story = {
+  name: 'DOffcanvas Bottom',
+  render: () => withPortalProvider(<OffcanvasBottomTrigger />),
 };
 
 export const BothTogether: Story = {
