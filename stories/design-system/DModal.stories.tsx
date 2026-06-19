@@ -7,6 +7,7 @@ import {
   DContextProvider,
   DModal,
   DOffcanvas,
+  useMediaBreakpointUpMd,
   useDPortalContext,
 } from '@dynamic-framework/ui-react';
 
@@ -20,6 +21,9 @@ type PortalPayloads = {
     description: string;
   };
   offcanvasBottomExample: {
+    description: string;
+  };
+  offcanvasResponsiveExample: {
     description: string;
   };
 };
@@ -153,6 +157,52 @@ const OffcanvasBottomPortal = (
   );
 };
 
+const OffcanvasResponsivePortal = (
+  { payload }: PortalProps<PortalPayloads['offcanvasResponsiveExample']>,
+) => {
+  const { closePortal } = useDPortalContext<PortalPayloads>();
+  const isDesktop = useMediaBreakpointUpMd(true);
+
+  const handleClose = useCallback(() => {
+    closePortal();
+  }, [closePortal]);
+
+  return (
+    <DOffcanvas
+      name="offcanvasResponsiveExample"
+      className="d-offcanvas-responsive"
+      openFrom={isDesktop ? 'end' : 'bottom'}
+    >
+      <DOffcanvas.Header
+        showCloseButton
+        onClose={handleClose}
+      >
+        <h5 className="fw-bold mb-0">Offcanvas responsive</h5>
+      </DOffcanvas.Header>
+      <DOffcanvas.Body>
+        <p className="mb-1">
+          En desktop abre desde la derecha y en mobile abre desde abajo.
+        </p>
+        <small>{payload.description}</small>
+      </DOffcanvas.Body>
+      <DOffcanvas.Footer>
+        <DButton
+          variant="outline"
+          onClick={handleClose}
+        >
+          Cerrar
+        </DButton>
+        <DButton
+          color="primary"
+          onClick={handleClose}
+        >
+          Entendido
+        </DButton>
+      </DOffcanvas.Footer>
+    </DOffcanvas>
+  );
+};
+
 const ModalTrigger = () => {
   const { openPortal } = useDPortalContext<PortalPayloads>();
 
@@ -195,6 +245,22 @@ const OffcanvasBottomTrigger = () => {
   );
 };
 
+const OffcanvasResponsiveTrigger = () => {
+  const { openPortal } = useDPortalContext<PortalPayloads>();
+
+  const handleOpenOffcanvasResponsive = useCallback(() => {
+    openPortal('offcanvasResponsiveExample', {
+      description: 'Usa useMediaBreakpointUpMd para cambiar la direccion',
+    });
+  }, [openPortal]);
+
+  return (
+    <DButton onClick={handleOpenOffcanvasResponsive}>
+      Abrir Offcanvas Responsive
+    </DButton>
+  );
+};
+
 const DualTrigger = () => (
   <div style={{ display: 'flex', gap: '1rem' }}>
     <ModalTrigger />
@@ -209,6 +275,7 @@ const withPortalProvider = (content: JSX.Element) => (
       modalExample: ModalPortal,
       offcanvasExample: OffcanvasPortal,
       offcanvasBottomExample: OffcanvasBottomPortal,
+      offcanvasResponsiveExample: OffcanvasResponsivePortal,
     }}
   >
     {content}
@@ -244,6 +311,11 @@ export const Offcanvas: Story = {
 export const OffcanvasBottom: Story = {
   name: 'DOffcanvas Bottom',
   render: () => withPortalProvider(<OffcanvasBottomTrigger />),
+};
+
+export const OffcanvasResponsive: Story = {
+  name: 'DOffcanvas Responsive',
+  render: () => withPortalProvider(<OffcanvasResponsiveTrigger />),
 };
 
 export const BothTogether: Story = {

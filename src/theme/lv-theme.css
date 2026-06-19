@@ -92,6 +92,13 @@
   --bs-alert-border: 0;
 }
 
+/* OFFCANVAS */
+
+.d-offcanvas-responsive {
+  --bs-offcanvas-width: 80%;
+  --bs-offcanvas-height: 80vh;
+}
+
 body {
   font-family: var(--bs-font-sans-serif);
   background: linear-gradient(180deg, var(--lv-surface-top) 0%, var(--lv-bg-page) 28%, var(--lv-bg-page) 100%);
