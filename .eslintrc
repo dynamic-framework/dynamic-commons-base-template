@@ -27,7 +27,7 @@
     {
       "files": ["stories/**/*.ts", "stories/**/*.tsx"],
       "parserOptions": {
-        "project": ["./tsconfig.json"],
+        "project": ["./stories/tsconfig.json"],
         "EXPERIMENTAL_useSourceOfProjectReferenceRedirect": true
       },
       "extends": [

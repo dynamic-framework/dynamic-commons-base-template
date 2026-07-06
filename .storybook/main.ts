@@ -47,6 +47,10 @@ const config: StorybookConfig = {
   core: {
     disableTelemetry: true
   },
+
+  features: {
+    componentsManifest: true,
+  },
   staticDirs: [
     './public',
     '../dist',

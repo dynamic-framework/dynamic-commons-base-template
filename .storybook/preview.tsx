@@ -26,7 +26,7 @@ const preview: Preview = {
       </DContextProvider>
     ),
   ],
-  tags: ['autodocs']
+  tags: ['autodocs', 'dev', 'test', 'manifest']
 };
 
 export default preview;
