@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.8.0](https://github.com/dynamic-framework/dynamic-commons-base-template/compare/v1.7.0...v1.8.0) (2026-07-08)
+
+
+### Features
+
+* **storybook:** add TypeScript configuration and typings for stories ([e40fecd](https://github.com/dynamic-framework/dynamic-commons-base-template/commit/e40fecd11e2deee539a80816f37d5040d5fff76c))
+* update library and enhance docs ([#60](https://github.com/dynamic-framework/dynamic-commons-base-template/issues/60)) ([97f8982](https://github.com/dynamic-framework/dynamic-commons-base-template/commit/97f8982859f721c80ed4ed3ed59d2efabcabdd9c))
+
 ## [1.7.0](https://github.com/dynamic-framework/dynamic-commons-base-template/compare/v1.6.0...v1.7.0) (2026-01-14)
 
 
