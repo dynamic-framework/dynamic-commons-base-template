@@ -30,3 +30,4 @@ npm install @dynamic-framework/dynamic-commons-base-template
 
 ## Learn More
 Find more information about microfrontends and configuration details on [Modyo Docs](https://docs.modyo.com) & [Modyo Community](https://www.modyo.com/community)
+# mibanco-co-commons
