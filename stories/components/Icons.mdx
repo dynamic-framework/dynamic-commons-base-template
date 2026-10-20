@@ -22,11 +22,22 @@ once the registry is handed to `DContextProvider`.
 ## Adding an icon
 
 1. Drop the file into `src/icons`, e.g. `src/icons/my-icon.svg`.
-2. Re-export it from `src/icons/index.ts`:
+2. Re-export it from `src/icons/index.ts` as an **explicitly typed constant**:
 
    ```ts
-   export { default as IconMyIcon } from './my-icon.svg';
+   import type { FC, SVGProps } from 'react';
+
+   import MyIcon from './my-icon.svg';
+
+   export const IconMyIcon: FC<SVGProps<SVGSVGElement>> = MyIcon;
    ```
+
+   Do not use `export { default as IconMyIcon } from './my-icon.svg'`. A bare
+   re-export leaks the `.svg` specifier into `dist/types`, and the package
+   publishes neither svg sources nor an ambient `*.svg` declaration — so
+   consumers hit `TS2307` with library checking on, or resolve the icon to
+   `string` if their own declaration types svg as a url. Annotating the
+   constant keeps the emitted declaration dependent on React types only.
 
 3. Optionally register it by name in `src/icons/iconRegistry.ts` to reach it
    through `DIcon`.
@@ -45,6 +56,7 @@ once the registry is handed to `DContextProvider`.
 | Keep the `viewBox` attribute | svgo runs with `removeViewBox: false`, but it cannot restore a `viewBox` that was never there — without it the icon cannot scale. |
 | Use `stroke="currentColor"` / `fill="currentColor"` | Lets the icon inherit the text color, so `text-primary` & friends just work. |
 | Do not rely on intrinsic `width`/`height` | `dimensions: false` strips them; size the icon from props or css (`1em` scales it with the font size). |
+| Export each icon as a typed constant, never as a bare `export … from './x.svg'` | Keeps the `.svg` specifier out of `dist/types`, which the published package cannot resolve. |
 | Avoid duplicated `id` attributes across files | Icons are inlined into the same document, and svgo does not namespace ids across separate files. |
 
 ---
@@ -202,8 +214,8 @@ Icons used as components are tree-shakeable. A widget that imports only
 | Widget imports | Raw | Gzip | Icon code included |
 | --- | --- | --- | --- |
 | `SimpleComponent` | 264 B | 206 B | none |
-| `SimpleComponent` + `IconCheckCircle` | 1091 B | 616 B | that one icon |
-| `iconRegistry` | 3366 B | 1191 B | **every icon in the registry** |
+| `SimpleComponent` + `IconCheckCircle` | 1114 B | 619 B | that one icon |
+| `iconRegistry` | 3982 B | 1460 B | **every icon in the registry** |
 
 This holds because `package.json` declares `"sideEffects": ["*.css"]` and svgr
 emits `/*#__PURE__*/`-annotated components.
@@ -221,7 +233,7 @@ emits `/*#__PURE__*/`-annotated components.
 | No icon system | 3188 B | 961 B |
 | + 1 icon | 4017 B | 1358 B |
 | + 3 icons | 5803 B | 1664 B |
-| + 3 icons and the registry | 6575 B | 2045 B |
+| + 3 icons and the registry | 7140 B | 2296 B |
 
 The first icon costs more (~829 B raw) because it also brings the React import
 and the `_extends` helper. Each additional icon adds roughly **~890 B raw /

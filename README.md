@@ -31,7 +31,20 @@ npm install @dynamic-framework/dynamic-commons-base-template
 ## Icon system
 This template ships a build-time svg → React component pipeline, so your commons can publish its own icons without each consuming widget re-wiring svgr.
 
-Add `my-icon.svg` to `src/icons`, re-export it from `src/icons/index.ts`, and consume it as a component:
+Add `my-icon.svg` to `src/icons` and re-export it from `src/icons/index.ts` as an explicitly typed constant:
+
+```ts
+import type { FC, SVGProps } from 'react';
+
+import MyIcon from './my-icon.svg';
+
+export const IconMyIcon: FC<SVGProps<SVGSVGElement>> = MyIcon;
+```
+
+> [!IMPORTANT]
+> Do not use `export { default as IconMyIcon } from './my-icon.svg'`. That leaks the `.svg` specifier into `dist/types`, which the published package cannot resolve — consumers get `TS2307`, or `string` instead of a component.
+
+Then consume it:
 
 ```tsx
 import { IconMyIcon } from '@your-scope/your-commons';
