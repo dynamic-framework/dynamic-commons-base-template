@@ -23,6 +23,9 @@ module.exports = {
     '<rootDir>/dist-transpiled/',
   ],
   moduleNameMapper: {
+    // Must stay above the generic asset mapper: the icon system turns `.svg`
+    // imports into React components, so they cannot resolve to a url string.
+    '\\.svg$': '<rootDir>/tests/__mocks__/svgMock.tsx',
     '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$': '<rootDir>/node_modules/@dynamic-framework/ui-react/jest/__mocks__/fileMock.js',
     '\\.(css|sass|scss)$': '<rootDir>/node_modules/@dynamic-framework/ui-react/jest/__mocks__/styleMock.js',
   },
