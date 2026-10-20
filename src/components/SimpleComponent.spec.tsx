@@ -14,6 +14,7 @@ it('should render', () => {
     role="alert"
   >
     <span
+      aria-hidden="true"
       class="d-icon alert-icon"
     >
       <svg

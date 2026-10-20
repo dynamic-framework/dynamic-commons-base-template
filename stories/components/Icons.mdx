@@ -1,0 +1,300 @@
+import { Canvas, Controls, Meta } from '@storybook/addon-docs/blocks';
+
+import * as IconsStories from './Icons.stories';
+
+<Meta of={IconsStories} />
+
+# Icon System
+
+This commons ships a **build-time svg → React component** pipeline. Any `.svg`
+imported from `src` becomes a typed React component, so icons are published as
+part of the library instead of being re-wired in every consuming widget.
+
+They can be used two ways: directly as components, or by name through `DIcon`
+once the registry is handed to `DContextProvider`.
+
+<Canvas of={IconsStories.Default} />
+
+<Controls of={IconsStories.Default} />
+
+---
+
+## Adding an icon
+
+1. Drop the file into `src/icons`, e.g. `src/icons/my-icon.svg`.
+2. Re-export it from `src/icons/index.ts` as an **explicitly typed constant**:
+
+   ```ts
+   import type { FC, SVGProps } from 'react';
+
+   import MyIcon from './my-icon.svg';
+
+   export const IconMyIcon: FC<SVGProps<SVGSVGElement>> = MyIcon;
+   ```
+
+   Do not use `export { default as IconMyIcon } from './my-icon.svg'`. A bare
+   re-export leaks the `.svg` specifier into `dist/types`, and the package
+   publishes neither svg sources nor an ambient `*.svg` declaration — so
+   consumers hit `TS2307` with library checking on, or resolve the icon to
+   `string` if their own declaration types svg as a url. Annotating the
+   constant keeps the emitted declaration dependent on React types only.
+
+3. Optionally register it by name in `src/icons/iconRegistry.ts` to reach it
+   through `DIcon`.
+4. Consume it from the published package:
+
+   ```tsx
+   import { IconMyIcon } from '@your-scope/your-commons';
+
+   <IconMyIcon width={24} height={24} className="text-primary" />
+   ```
+
+### Authoring rules
+
+| Rule | Why |
+| --- | --- |
+| Keep the `viewBox` attribute | svgo runs with `removeViewBox: false`, but it cannot restore a `viewBox` that was never there — without it the icon cannot scale. |
+| Use `stroke="currentColor"` / `fill="currentColor"` | Lets the icon inherit the text color, so `text-primary` & friends just work. |
+| Do not rely on intrinsic `width`/`height` | `dimensions: false` strips them; size the icon from props or css (`1em` scales it with the font size). |
+| Export each icon as a typed constant, never as a bare `export … from './x.svg'` | Keeps the `.svg` specifier out of `dist/types`, which the published package cannot resolve. |
+| Avoid duplicated `id` attributes across files | Icons are inlined into the same document, and svgo does not namespace ids across separate files. |
+
+---
+
+## Using them directly
+
+An icon is a plain React component, so there is no `size` or `color` prop —
+both come from standard svg/css:
+
+```tsx
+// Fixed size.
+<IconCreditCard width={24} height={24} />
+
+// Tracks the surrounding font-size.
+<p className="fs-3">
+  <IconCreditCard width="1em" height="1em" /> Payments
+</p>
+
+// Color: `stroke="currentColor"` picks up any `text-*` utility,
+// set on the icon itself or on an ancestor.
+<IconCreditCard width={24} height={24} className="text-primary" />
+<span className="text-danger"><IconCreditCard width={24} height={24} /></span>
+```
+
+Because `dimensions: false` strips the intrinsic `width`/`height`, an icon
+rendered without a size is laid out at the browser default for a replaced
+element — far larger than intended. Always set one.
+
+---
+
+## Using them through `DIcon`
+
+`DIconBase` resolves its `icon` prop in three steps:
+
+1. **The icon registry** passed to `DContextProvider`.
+2. **`lucide-react`**, for any PascalCase name it exports.
+3. **The icon-font family** (`familyClass` + `familyPrefix`), the legacy path.
+
+So registering a Lucide name overrides that icon everywhere `DIcon` is used —
+including inside framework components that render icons internally — while any
+other key simply adds a new name. Unregistered names keep falling through to
+Lucide, so adopting a registry is not a breaking change.
+
+```tsx
+import { DContextProvider, DIcon } from '@dynamic-framework/ui-react';
+import { iconRegistry } from '@your-scope/your-commons';
+
+<DContextProvider iconRegistry={iconRegistry}>
+  <DIcon icon="CreditCard" size="2rem" color="primary" />  {/* brand svg */}
+  <DIcon icon="BrandCheck" size="2rem" />                  {/* registry-only name */}
+  <DIcon icon="House" size="2rem" />                       {/* Lucide, unchanged */}
+</DContextProvider>
+```
+
+`src/icons/iconRegistry.ts` is where this commons declares its map. An
+application can spread it and add its own entries:
+
+```tsx
+<DContextProvider iconRegistry={{ ...iconRegistry, Wallet: IconWallet }}>
+```
+
+> **Requires `@dynamic-framework/ui-react` >= 2.7.0** — the version that added
+> the `iconRegistry` prop. The `peerDependencies` range in `package.json` was
+> raised accordingly.
+
+### Always write the registry by hand
+
+**Import only the icons you actually need to resolve by name.** The registry is
+a single object literal, so every component it references is pulled into the
+bundle and evaluated as soon as the registry is imported — there is no per-icon
+tree-shaking inside it. Registering the whole set, or generating the map from a
+barrel or a glob, ships all of it eagerly.
+
+```tsx
+// Good — explicit and minimal.
+import { IconCreditCard, IconPiggyBank } from './index';
+
+export const iconRegistry: IconRegistry = {
+  CreditCard: IconCreditCard,
+  PiggyBank: IconPiggyBank,
+};
+
+// Bad — ships every icon in the commons, rendered or not.
+import * as icons from './index';
+
+export const iconRegistry = icons as IconRegistry;
+```
+
+At roughly 890 B raw / 150 B gzip per icon, a 200-icon set registered wholesale
+adds about **175 KB raw (~30 KB gzip)** to every widget that mounts the
+provider, all of it parsed up front. Unless your set is genuinely small, keep
+the registry to the handful of names you override and import the icon component
+directly everywhere else — those stay per-icon tree-shakeable.
+
+> **`DIcon` is not free either.** `DIconBase` resolves Lucide names through
+> `import * as LucideIcons from 'lucide-react'` plus a dynamic `icons[name]`
+> lookup, which no bundler can tree-shake. Bundling `DIcon` on its own pulls in
+> **787 KB raw / 167 KB gzip** of lucide-react, against ~2 KB for importing a
+> single Lucide icon directly. That cost belongs to the framework rather than
+> to the registry, but it is the reason to be deliberate about icons on a
+> critical path.
+
+Mind the two ways of reaching the same icon, and pick deliberately:
+
+| | `DIcon` + registry | Direct component |
+| --- | --- | --- |
+| Usage | `<DIcon icon="CreditCard" size="2rem" color="primary" />` | `<IconCreditCard width={32} height={32} className="text-primary" />` |
+| Sizing / color | `size` and `color` props, `.d-icon` wrapper | svg props and `currentColor` |
+| Overrides framework icons | yes | no |
+| Tree-shakeable per icon | no — see **Cost** | yes |
+
+---
+
+## How it works
+
+Both pipelines are configured from a single options object in
+`svgr.config.mjs` — including an explicit `plugins: ['@svgr/plugin-svgo',
+'@svgr/plugin-jsx']`, so svgo runs on both sides and Storybook renders
+byte-for-byte what gets published:
+
+| Pipeline | Plugin | File |
+| --- | --- | --- |
+| Published build | `@svgr/rollup` | `rollup.config.mjs` |
+| Storybook / dev | `vite-plugin-svgr` | `vite.config.mjs` |
+| Unit tests | `moduleNameMapper` → `tests/__mocks__/svgMock.tsx` | `jest.config.js` |
+| Types | `declare module '*.svg'` | `src/typings.d.ts` |
+| `DIcon` registry | `iconRegistry` for `DContextProvider` | `src/icons/iconRegistry.ts` |
+
+Two non-obvious constraints are baked into the configuration:
+
+- **`jsxRuntime` must stay `'classic'`.** `@svgr/rollup` v8 post-processes
+  svgr's output with a hardcoded classic `@babel/preset-react`. With
+  `'automatic'`, svgr omits the `import * as React from 'react'` that the
+  resulting `React.createElement` calls need, and the published bundle throws
+  `React is not defined` at runtime.
+- **`@svgr/rollup` cannot be reused in vite.** It only exposes a `transform`
+  hook, so vite's asset plugin resolves `.svg` to a data URI before svgr ever
+  sees the markup. `vite-plugin-svgr` uses a `load` hook with `enforce: 'pre'`
+  instead, and is configured with `include: '**/*.svg'` (so plain imports work,
+  not only `?react` ones) plus `oxcOptions` / `esbuildOptions` set to a `tsx`
+  loader (because svgr emits TypeScript).
+
+---
+
+## Cost
+
+Measured on this template with three example icons.
+
+### Consumers of the published package
+
+Icons used as components are tree-shakeable. A widget that imports only
+`SimpleComponent` pulls in **no icon code at all** — verified by bundling
+`dist/index.esm.js` and inspecting the output:
+
+| Widget imports | Raw | Gzip | Icon code included |
+| --- | --- | --- | --- |
+| `SimpleComponent` | 264 B | 206 B | none |
+| `SimpleComponent` + `IconCheckCircle` | 1114 B | 619 B | that one icon |
+| `iconRegistry` | 3982 B | 1460 B | **every icon in the registry** |
+
+This holds because `package.json` declares `"sideEffects": ["*.css"]` and svgr
+emits `/*#__PURE__*/`-annotated components.
+
+> **The registry is the one thing that is not tree-shakeable.** `iconRegistry`
+> is a single object literal referencing every icon it maps, so passing it to
+> `DContextProvider` ships all of them even if only one name is ever rendered.
+> See **Always write the registry by hand** above — this is the single biggest
+> performance decision in the icon system.
+
+### Published artifact (`dist/index.esm.js`)
+
+| Content | Raw | Gzip |
+| --- | --- | --- |
+| No icon system | 3188 B | 961 B |
+| + 1 icon | 4017 B | 1358 B |
+| + 3 icons | 5803 B | 1664 B |
+| + 3 icons and the registry | 7140 B | 2296 B |
+
+The first icon costs more (~829 B raw) because it also brings the React import
+and the `_extends` helper. Each additional icon adds roughly **~890 B raw /
+~150 B gzip**. Note that svgr emits one `_extends` helper *per* svg module
+rather than sharing a single one, which is ~230 B of raw boilerplate per icon
+that gzip largely collapses.
+
+### Repository (`devDependencies` only)
+
+| Metric | Delta |
+| --- | --- |
+| Direct `devDependencies` added | 4 (`@svgr/rollup`, `@svgr/plugin-svgo`, `@svgr/plugin-jsx`, `vite-plugin-svgr`) |
+| Packages added to the lockfile | 32 |
+| `node_modules` on disk | **+9.0 MB** (644 MB → 653 MB, +1.4 %) |
+| `npm run build` wall time | +0.1–0.2 s (within noise) |
+
+Most of the disk cost is `svgo` and its `csso`/`css-tree`/`mdn-data`
+dependencies (~7.6 MB of the 9.0 MB). None of it reaches consumers — these are
+build-time `devDependencies`.
+
+---
+
+## Removing the icon system
+
+If your commons does not ship svg icons, the feature is fully removable in
+seven steps and leaves no trace in the published package.
+
+1. **Uninstall the dependencies**
+
+   ```sh
+   npm uninstall @svgr/rollup @svgr/plugin-svgo @svgr/plugin-jsx vite-plugin-svgr
+   ```
+
+2. **Delete the shared options, the icons and these docs**
+
+   ```sh
+   rm svgr.config.mjs src/typings.d.ts tests/__mocks__/svgMock.tsx
+   rm -rf src/icons
+   rm stories/components/Icons.stories.tsx stories/components/Icons.mdx
+   ```
+
+3. **`rollup.config.mjs`** — drop the `svgr` import, the `svgrOptions` import
+   and the `svgr(svgrOptions)` entry from `plugins`.
+
+4. **`vite.config.mjs`** — drop the `svgr` import, the `svgrOptions` import and
+   the `svgr({ ... })` entry from `plugins`.
+
+5. **`src/index.ts`** — remove the `./icons` and `./icons/iconRegistry`
+   exports. Consumers stop passing `iconRegistry` to `DContextProvider`, which
+   also lifts the `>= 2.7.0` floor on the `@dynamic-framework/ui-react` peer
+   dependency.
+
+6. **`jest.config.js`** — remove the `'\\.svg$'` entry from `moduleNameMapper`.
+   The generic asset mapper below it already handles `.svg` as a url string.
+
+7. **`.storybook/`** — remove `"../src/typings.d.ts"` from `include` in
+   `tsconfig.json`, and `'../stories/**/*.mdx'` from `stories` in `main.ts` if
+   this was the only attached docs page you kept.
+
+Then verify:
+
+```sh
+npm run build && npm test && npm run lint
+```
